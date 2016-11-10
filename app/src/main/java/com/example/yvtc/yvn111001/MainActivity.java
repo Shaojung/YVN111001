@@ -3,6 +3,8 @@ package com.example.yvtc.yvn111001;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -60,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
 
                     inputStream.close();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ListView lv = (ListView) findViewById(R.id.listView);
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                                    MainActivity.this, android.R.layout.simple_list_item_1,
+                                    dataHandler.mylist
+                            );
+                            lv.setAdapter(adapter);
+                        }
+                    });
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

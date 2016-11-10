@@ -6,12 +6,15 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import java.util.ArrayList;
+
 /**
  * Created by yvtc on 2016/11/10.
  */
 
 public class MyDataHandler extends DefaultHandler {
     boolean inTitle, inItem;
+    ArrayList<String> mylist = new ArrayList<>();
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
@@ -44,6 +47,7 @@ public class MyDataHandler extends DefaultHandler {
         if (inTitle & inItem)
         {
             String str = new String(ch).substring(start, start + length);
+            mylist.add(str);
             Log.d("NET", str);
         }
     }
