@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 super.run();
 
-                String str_url = "http://www.google.com.tw";
+                String str_url = "http://udn.com/rssfeed/news/1";
                 try {
                     URL url = new URL(str_url);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
